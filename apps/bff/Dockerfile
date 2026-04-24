@@ -13,7 +13,7 @@ COPY config.yaml ./
 
 RUN pip install --no-cache-dir -e .
 
-EXPOSE 8000
+EXPOSE 8001
 
 # config.yaml drives host/port/db/logging. Mount your own to override.
 CMD ["trinox-bff"]

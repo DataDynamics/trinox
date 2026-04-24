@@ -59,7 +59,7 @@ pnpm dev                          # http://localhost:5173
 ```bash
 docker-compose up
 # web:   http://localhost:5173
-# bff:   http://localhost:8000
+# bff:   http://localhost:8001
 # trino: http://localhost:8080
 ```
 
@@ -71,7 +71,7 @@ file with the `CONFIG_FILE` environment variable.
 ```yaml
 server:
   host: 0.0.0.0
-  port: 8000
+  port: 8001
   cors_origins: [http://localhost:5173]
 
 database:

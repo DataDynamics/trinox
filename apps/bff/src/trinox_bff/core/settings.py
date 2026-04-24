@@ -17,7 +17,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class ServerConfig(BaseModel):
     host: str = "0.0.0.0"
-    port: int = 8000
+    port: int = 8001
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:5173"])
 
 
