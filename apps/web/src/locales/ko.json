@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Trinox",
+    "subtitle": "Trino 모니터링"
+  },
+  "nav": {
+    "dashboard": "대시보드",
+    "queries": "쿼리",
+    "liveQueries": "실시간 쿼리",
+    "queryHistory": "쿼리 히스토리",
+    "analytics": "분석",
+    "scatter": "응답시간 산점도",
+    "trends": "트렌드",
+    "sql": "SQL",
+    "editor": "SQL 편집기",
+    "formatter": "SQL 포맷터",
+    "catalog": "메타데이터",
+    "cluster": "클러스터",
+    "nodes": "노드"
+  },
+  "common": {
+    "search": "검색",
+    "refresh": "새로고침",
+    "execute": "실행",
+    "format": "포맷",
+    "download": "다운로드",
+    "export": "내보내기",
+    "copy": "복사",
+    "kill": "중지",
+    "detail": "상세",
+    "filter": "필터",
+    "from": "시작",
+    "to": "종료",
+    "user": "사용자",
+    "state": "상태",
+    "catalog": "카탈로그",
+    "schema": "스키마",
+    "table": "테이블",
+    "columns": "컬럼",
+    "noData": "데이터 없음",
+    "loading": "로딩중...",
+    "clear": "초기화",
+    "save": "저장",
+    "cancel": "취소",
+    "language": "언어",
+    "theme": "테마",
+    "darkMode": "다크 모드",
+    "lightMode": "라이트 모드"
+  },
+  "dashboard": {
+    "running": "실행중",
+    "queued": "대기중",
+    "failureRate": "실패율",
+    "avgLatency": "평균 응답시간",
+    "activeNodes": "활성 노드",
+    "memoryUsage": "메모리 사용률",
+    "queryRate": "쿼리 처리량",
+    "topLongRunning": "Top Long Running",
+    "catalogDistribution": "카탈로그 분포"
+  },
+  "queries": {
+    "queryId": "Query ID",
+    "elapsed": "경과시간",
+    "cpu": "CPU",
+    "memory": "메모리",
+    "rows": "행",
+    "progress": "진행률",
+    "confirmKill": "이 쿼리를 중지하시겠습니까?",
+    "killed": "중지됨",
+    "killFailed": "중지 실패"
+  },
+  "history": {
+    "title": "쿼리 히스토리",
+    "searchSql": "SQL 검색",
+    "queryType": "쿼리 타입",
+    "minElapsed": "최소 경과 (ms)",
+    "maxElapsed": "최대 경과 (ms)"
+  },
+  "scatter": {
+    "title": "응답시간 산점도",
+    "xAxis": "실행 시각",
+    "yAxis": "응답시간 (ms)",
+    "logScale": "로그 스케일",
+    "colorBy": "색상 기준",
+    "sizeBy": "크기 기준"
+  },
+  "trends": {
+    "title": "시계열 트렌드",
+    "bucket": "집계 단위(분)",
+    "qps": "처리량",
+    "latency": "응답시간"
+  },
+  "editor": {
+    "runQuery": "쿼리 실행",
+    "format": "포맷",
+    "exportCsv": "CSV 내보내기",
+    "exportJson": "JSON 내보내기",
+    "limit": "결과 제한",
+    "errorTitle": "실행 오류"
+  },
+  "formatter": {
+    "title": "SQL 포맷터",
+    "input": "입력 SQL",
+    "output": "포맷된 SQL",
+    "uppercaseKeywords": "키워드 대문자",
+    "indent": "들여쓰기",
+    "stripComments": "주석 제거"
+  },
+  "catalog": {
+    "title": "메타데이터 브라우저",
+    "ddl": "DDL",
+    "sample": "샘플 데이터",
+    "preview": "미리보기"
+  }
+}

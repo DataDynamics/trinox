@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  trino:
+    image: trinodb/trino:450
+    container_name: trinox-trino
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/info"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: trinox-postgres
+    environment:
+      POSTGRES_USER: trinox
+      POSTGRES_PASSWORD: trinox
+      POSTGRES_DB: trinox
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  bff:
+    build:
+      context: ./apps/bff
+      dockerfile: Dockerfile
+    container_name: trinox-bff
+    environment:
+      TRINO_HOST: trino
+      TRINO_PORT: "8080"
+      TRINO_USER: trinox
+      DATABASE_URL: postgresql+psycopg://trinox:trinox@postgres:5432/trinox
+      CORS_ORIGINS: "http://localhost:5173"
+    depends_on:
+      trino:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: trinox-web
+    environment:
+      VITE_API_BASE: http://localhost:8000
+    depends_on:
+      - bff
+    ports:
+      - "5173:5173"
+
+volumes:
+  pgdata:

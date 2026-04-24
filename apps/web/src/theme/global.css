@@ -1,0 +1,35 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    "Pretendard", "Noto Sans KR", sans-serif;
+  font-feature-settings: "tnum";
+}
+
+.trinox-monospace {
+  font-family: "JetBrains Mono", "Fira Code", "Menlo", monospace;
+}
+
+.trinox-layout {
+  height: 100vh;
+}
+
+.trinox-content {
+  overflow: auto;
+}
+
+.trinox-scrollable {
+  overflow: auto;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Trinox",
+    "subtitle": "Trino Monitoring"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "queries": "Queries",
+    "liveQueries": "Live Queries",
+    "queryHistory": "Query History",
+    "analytics": "Analytics",
+    "scatter": "Latency Scatter",
+    "trends": "Trends",
+    "sql": "SQL",
+    "editor": "SQL Editor",
+    "formatter": "SQL Formatter",
+    "catalog": "Catalog",
+    "cluster": "Cluster",
+    "nodes": "Nodes"
+  },
+  "common": {
+    "search": "Search",
+    "refresh": "Refresh",
+    "execute": "Execute",
+    "format": "Format",
+    "download": "Download",
+    "export": "Export",
+    "copy": "Copy",
+    "kill": "Kill",
+    "detail": "Detail",
+    "filter": "Filter",
+    "from": "From",
+    "to": "To",
+    "user": "User",
+    "state": "State",
+    "catalog": "Catalog",
+    "schema": "Schema",
+    "table": "Table",
+    "columns": "Columns",
+    "noData": "No data",
+    "loading": "Loading...",
+    "clear": "Clear",
+    "save": "Save",
+    "cancel": "Cancel",
+    "language": "Language",
+    "theme": "Theme",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
+  },
+  "dashboard": {
+    "running": "Running",
+    "queued": "Queued",
+    "failureRate": "Failure Rate",
+    "avgLatency": "Avg Latency",
+    "activeNodes": "Active Nodes",
+    "memoryUsage": "Memory Usage",
+    "queryRate": "Query Rate",
+    "topLongRunning": "Top Long Running",
+    "catalogDistribution": "Catalog Distribution"
+  },
+  "queries": {
+    "queryId": "Query ID",
+    "elapsed": "Elapsed",
+    "cpu": "CPU",
+    "memory": "Memory",
+    "rows": "Rows",
+    "progress": "Progress",
+    "confirmKill": "Kill this query?",
+    "killed": "Killed",
+    "killFailed": "Kill failed"
+  },
+  "history": {
+    "title": "Query History",
+    "searchSql": "Search SQL",
+    "queryType": "Query Type",
+    "minElapsed": "Min elapsed (ms)",
+    "maxElapsed": "Max elapsed (ms)"
+  },
+  "scatter": {
+    "title": "Latency Scatter",
+    "xAxis": "Execution Time",
+    "yAxis": "Response Time (ms)",
+    "logScale": "Log scale",
+    "colorBy": "Color by",
+    "sizeBy": "Size by"
+  },
+  "trends": {
+    "title": "Trends",
+    "bucket": "Bucket (min)",
+    "qps": "QPS",
+    "latency": "Latency"
+  },
+  "editor": {
+    "runQuery": "Run Query",
+    "format": "Format",
+    "exportCsv": "Export CSV",
+    "exportJson": "Export JSON",
+    "limit": "Row limit",
+    "errorTitle": "Execution error"
+  },
+  "formatter": {
+    "title": "SQL Formatter",
+    "input": "Input SQL",
+    "output": "Formatted SQL",
+    "uppercaseKeywords": "Uppercase keywords",
+    "indent": "Indent",
+    "stripComments": "Strip comments"
+  },
+  "catalog": {
+    "title": "Catalog Browser",
+    "ddl": "DDL",
+    "sample": "Sample data",
+    "preview": "Preview"
+  }
+}

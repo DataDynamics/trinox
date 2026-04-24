@@ -1,0 +1,16 @@
+{
+  "name": "trinox",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Trino monitoring & query UI",
+  "scripts": {
+    "dev": "pnpm --filter @trinox/web dev",
+    "build": "pnpm --filter @trinox/web build",
+    "lint": "pnpm --filter @trinox/web lint",
+    "typecheck": "pnpm --filter @trinox/web typecheck"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

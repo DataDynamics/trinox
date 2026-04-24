@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "trinox-bff"
+version = "0.1.0"
+description = "Trinox BFF — FastAPI backend for Trino monitoring UI"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.111",
+  "uvicorn[standard]>=0.30",
+  "httpx>=0.27",
+  "trino>=0.328",
+  "pydantic>=2.7",
+  "pydantic-settings>=2.3",
+  "sqlalchemy>=2.0",
+  "alembic>=1.13",
+  "aiosqlite>=0.20",
+  "psycopg[binary]>=3.2",
+  "python-multipart>=0.0.9",
+  "orjson>=3.10",
+  "sqlparse>=0.5",
+  "apscheduler>=3.10",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2",
+  "pytest-asyncio>=0.23",
+  "httpx>=0.27",
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trinox_bff"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
