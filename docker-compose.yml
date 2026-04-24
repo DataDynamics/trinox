@@ -29,12 +29,11 @@ services:
       context: ./apps/bff
       dockerfile: Dockerfile
     container_name: trinox-bff
-    environment:
-      TRINO_HOST: trino
-      TRINO_PORT: "8080"
-      TRINO_USER: trinox
-      DATABASE_URL: postgresql+psycopg://trinox:trinox@postgres:5432/trinox
-      CORS_ORIGINS: "http://localhost:5173"
+    # Mount your own config.yaml to override server/db/trino/logging settings.
+    volumes:
+      - ./apps/bff/config.yaml:/app/config.yaml:ro
+      - ./apps/bff/db.sql:/app/db.sql:ro
+      - bff_logs:/app/logs
     depends_on:
       trino:
         condition: service_healthy
@@ -57,3 +56,4 @@ services:
 
 volumes:
   pgdata:
+  bff_logs:

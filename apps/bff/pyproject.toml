@@ -22,7 +22,11 @@ dependencies = [
   "orjson>=3.10",
   "sqlparse>=0.5",
   "apscheduler>=3.10",
+  "pyyaml>=6.0",
 ]
+
+[project.scripts]
+trinox-bff = "trinox_bff.main:run"
 
 [project.optional-dependencies]
 dev = [

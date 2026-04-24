@@ -1,0 +1,55 @@
+# Trinox BFF configuration.
+#
+# Override the default config path with the ``CONFIG_FILE`` environment
+# variable. Every section has sensible defaults, so sections may be omitted.
+
+server:
+  host: 0.0.0.0
+  port: 8000
+  cors_origins:
+    - http://localhost:5173
+
+database:
+  # SQLAlchemy async URL. Examples:
+  #   sqlite+aiosqlite:///./trinox.db
+  #   postgresql+psycopg://trinox:trinox@localhost:5432/trinox
+  url: sqlite+aiosqlite:///./trinox.db
+
+  # Path to the schema bootstrap file (relative to the BFF working directory).
+  schema_file: db.sql
+
+  # If true, execute ``schema_file`` on startup (CREATE TABLE IF NOT EXISTS).
+  bootstrap: true
+
+trino:
+  host: localhost
+  port: 8080
+  user: trinox
+  http_scheme: http
+  password: null
+  catalog: null
+  schema: null
+
+history:
+  # Seconds between background polls of Trino's query list.
+  # Set to 0 to disable history syncing entirely.
+  poll_interval_seconds: 10
+
+logging:
+  level: INFO
+
+  # Directory where log files are written. Created on startup if missing.
+  directory: logs
+
+  # Log files are named ``<filename_prefix>-YYYYMMDD.log`` and rotate at
+  # local midnight. The previous day's file is left in place.
+  filename_prefix: app
+
+  # Also stream logs to stdout (useful for docker).
+  console: true
+
+  # Retention (days). Set to 0 to keep all log files forever.
+  retention_days: 30
+
+  format: "%(asctime)s %(levelname)-7s [%(name)s] %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"

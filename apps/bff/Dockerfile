@@ -8,9 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY pyproject.toml ./
 COPY src ./src
+COPY db.sql ./
+COPY config.yaml ./
 
 RUN pip install --no-cache-dir -e .
 
 EXPOSE 8000
 
-CMD ["uvicorn", "trinox_bff.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# config.yaml drives host/port/db/logging. Mount your own to override.
+CMD ["trinox-bff"]

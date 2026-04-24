@@ -18,9 +18,9 @@ class TrinoRestClient:
     def __init__(self, settings: Settings | None = None) -> None:
         self.settings = settings or get_settings()
         self._client = httpx.AsyncClient(
-            base_url=self.settings.trino_base_url,
+            base_url=self.settings.trino.base_url,
             timeout=httpx.Timeout(15.0, connect=5.0),
-            headers={"X-Trino-User": self.settings.trino_user},
+            headers={"X-Trino-User": self.settings.trino.user},
         )
 
     async def close(self) -> None:
@@ -61,19 +61,18 @@ class TrinoSqlClient:
         self.settings = settings or get_settings()
 
     def _connect(self, user: str | None = None):
+        trino_cfg = self.settings.trino
         auth = None
-        if self.settings.trino_password:
-            auth = BasicAuthentication(
-                self.settings.trino_user, self.settings.trino_password
-            )
+        if trino_cfg.password:
+            auth = BasicAuthentication(trino_cfg.user, trino_cfg.password)
         return connect(
-            host=self.settings.trino_host,
-            port=self.settings.trino_port,
-            user=user or self.settings.trino_user,
-            http_scheme=self.settings.trino_http_scheme,
+            host=trino_cfg.host,
+            port=trino_cfg.port,
+            user=user or trino_cfg.user,
+            http_scheme=trino_cfg.http_scheme,
             auth=auth,
-            catalog=self.settings.trino_catalog,
-            schema=self.settings.trino_schema,
+            catalog=trino_cfg.catalog,
+            schema=trino_cfg.schema,
         )
 
     def _execute(

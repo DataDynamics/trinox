@@ -47,12 +47,11 @@ pnpm install
 cd apps/bff
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
-export TRINO_HOST=localhost TRINO_PORT=8080 TRINO_USER=admin
-uvicorn trinox_bff.main:app --reload --port 8000
+trinox-bff                        # reads ./config.yaml
 
 # 3. Start the web app
 cd ../web
-pnpm dev   # http://localhost:5173
+pnpm dev                          # http://localhost:5173
 ```
 
 ### Docker
@@ -66,17 +65,49 @@ docker-compose up
 
 ## Configuration
 
-All backend settings are driven by environment variables — see `apps/bff/.env.example`.
+All backend settings live in **`apps/bff/config.yaml`**. Point to an alternate
+file with the `CONFIG_FILE` environment variable.
 
-| Variable | Default | Description |
-|---|---|---|
-| `TRINO_HOST` | `localhost` | Trino coordinator host |
-| `TRINO_PORT` | `8080` | Trino coordinator port |
-| `TRINO_USER` | `trinox` | Trino auth user |
-| `TRINO_HTTP_SCHEME` | `http` | `http` or `https` |
-| `DATABASE_URL` | `sqlite:///./trinox.db` | History DB (SQLite or PostgreSQL) |
-| `HISTORY_POLL_INTERVAL` | `10` | seconds between cluster history syncs |
-| `CORS_ORIGINS` | `http://localhost:5173` | Comma-separated allowed origins |
+```yaml
+server:
+  host: 0.0.0.0
+  port: 8000
+  cors_origins: [http://localhost:5173]
+
+database:
+  url: sqlite+aiosqlite:///./trinox.db   # or postgresql+psycopg://...
+  schema_file: db.sql                    # executed on startup
+  bootstrap: true
+
+trino:
+  host: localhost
+  port: 8080
+  user: trinox
+  http_scheme: http
+
+history:
+  poll_interval_seconds: 10              # 0 = disable history sync
+
+logging:
+  level: INFO
+  directory: logs                        # log file directory
+  filename_prefix: app                   # → logs/app-YYYYMMDD.log, rolls daily
+  console: true
+  retention_days: 30                     # 0 = keep forever
+```
+
+### Schema
+
+The database schema lives in [`apps/bff/db.sql`](apps/bff/db.sql) and is
+executed on application startup (`CREATE TABLE IF NOT EXISTS ...`). Edit it
+directly to add columns or indexes — no migration tool required for dev.
+
+### Logging
+
+Logs are written to `logs/app-YYYYMMDD.log` and roll automatically at local
+midnight. Each day's file keeps its date in the filename, so yesterday's file
+is left in place (no rename needed). Files older than `retention_days` are
+pruned on startup and on each rotation.
 
 ## License
 
